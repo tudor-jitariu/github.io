@@ -1,0 +1,39 @@
+[
+  {
+    "id": "tile-001",
+    "type": "image",
+    "categories": ["life"],
+    "title": "Placeholder photo",
+    "src": "assets/images/placeholder.jpg",
+    "alt": "A recent photo of Tudor",
+    "size": { "cols": 2, "rows": 2 }
+  },
+  {
+    "id": "tile-002",
+    "type": "text",
+    "categories": ["about-me"],
+    "title": "About me",
+    "body": "Architect in UK.",
+    "color": "peach",
+    "size": { "cols": 2, "rows": 1 }
+  },
+  {
+    "id": "tile-003",
+    "type": "stat",
+    "categories": ["running"],
+    "title": "Half marathon PB",
+    "value": "1:45:00",
+    "color": "butter",
+    "size": { "cols": 1, "rows": 1 }
+  },
+  {
+    "id": "tile-004",
+    "type": "link",
+    "categories": ["work"],
+    "title": "LinkedIn",
+    "url": "https://www.linkedin.com/in/your-profile",
+    "label": "Visit my profile",
+    "color": "sage",
+    "size": { "cols": 1, "rows": 1 }
+  }
+]

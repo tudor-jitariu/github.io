@@ -3,58 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name</title>
+  <title>Tudor Jitariu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <header class="site-header">
-    <h1>Your Name</h1>
+    <h1>Tudor Jitariu</h1>
     <button id="cv-button" class="cv-button">View CV</button>
   </header>
 
   <section class="banner">
-    <p class="banner-headline">Your main headline goes here</p>
-    <p class="banner-sub">A second line about who you are or what you do</p>
+    <p class="banner-headline">Architect in the UK</p>
+    <p class="banner-sub">Buildings, running and everything in between</p>
   </section>
 
-  <nav class="filters">
-    <button class="filter active">All</button>
-    <button class="filter">Life</button>
-    <button class="filter">Work</button>
-    <button class="filter">About me</button>
-    <button class="filter">Running</button>
-    <button class="filter">Interest</button>
-    <button class="filter">Travel</button>
-    <button class="filter">Non-assigned</button>
-  </nav>
+  <nav id="filters" class="filters" aria-label="Filter tiles"></nav>
 
-  <main class="tile-grid">
-    <article class="tile size-2x2" data-category="running">
-      <h2>A big tile</h2>
-      <p>This one spans 2 columns and 2 rows.</p>
-    </article>
+  <main id="board" class="board"></main>
+  <div id="sentinel"></div>
+  <p id="end" class="end" hidden>That's everything for now.</p>
 
-    <article class="tile size-1x1" data-category="work">
-      <h2>Small tile</h2>
-      <p>1 column, 1 row.</p>
-    </article>
-
-    <article class="tile size-2x1" data-category="travel">
-      <h2>Wide tile</h2>
-      <p>2 columns, 1 row.</p>
-    </article>
-
-    <article class="tile size-1x2" data-category="about-me">
-      <h2>Tall tile</h2>
-      <p>1 column, 2 rows.</p>
-    </article>
-
-    <article class="tile size-3x1" data-category="life">
-      <h2>Extra wide tile</h2>
-      <p>3 columns, 1 row.</p>
-    </article>
-  </main>
-
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,247 @@
+:root {
+  /* Palette: warm, soft, pastel */
+  --bg: #fbf7f1;
+  --text: #2d2926;
+  --muted: #7a716a;
+  --banner: #dce8d2;
+  --accent: #c9654a;
+
+  --peach: #fde3d3;
+  --butter: #fcf0c8;
+  --sage: #dce8d2;
+  --blush: #f8d9dc;
+  --white: #ffffff;
+
+  /* Shape and spacing */
+  --radius: 24px;                          /* outer tile corners */
+  --frame: 10px;                           /* thickness of the white edge */
+  --inner: calc(var(--radius) - var(--frame)); /* inner corners, so the curves match */
+  --gap: 16px;
+
+  /* Fonts */
+  --font-heading: "Newsreader", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Name */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: -0.02em;
+}
+
+.cv-button {
+  padding: 10px 20px;
+  border: 1.5px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cv-button:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Banner */
+.banner {
+  background: var(--banner);
+  margin: 0 32px;
+  padding: 48px 40px;
+  border-radius: var(--radius);
+}
+
+.banner-headline {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.banner-sub {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* Filter buttons */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 28px 32px 8px;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: 1.5px solid #e5ddd2;
+  background: transparent;
+  color: var(--text);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.filters button[aria-pressed="true"] {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* The board: 6 columns, tiles flow down each column (masonry) */
+.board {
+  column-count: 6;
+  column-gap: var(--gap);
+  padding: 16px 32px 24px;
+}
+
+@media (max-width: 1200px) { .board { column-count: 5; } }
+@media (max-width: 1000px) { .board { column-count: 4; } }
+@media (max-width: 760px)  { .board { column-count: 3; } }
+@media (max-width: 540px)  {
+  .board { column-count: 2; padding-left: 16px; padding-right: 16px; }
+  .site-header, .filters { padding-left: 16px; padding-right: 16px; }
+  .banner { margin: 0 16px; padding: 32px 24px; }
+}
+
+/* A tile = white frame with the content inside it */
+.tile {
+  break-inside: avoid;
+  margin: 0 0 var(--gap);
+  padding: var(--frame);
+  background: var(--white);
+  border: 1px solid rgba(45, 41, 38, 0.08);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(45, 41, 38, 0.08);
+  overflow: hidden;
+
+  /* start hidden, fade in when the "in" class is added */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tile.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Image, video, or placeholder at the top of a tile */
+.tile-media,
+.video-frame,
+.placeholder {
+  display: block;
+  width: 100%;
+  border-radius: var(--inner);
+}
+
+.tile-media { height: auto; }
+.video-frame { aspect-ratio: 16 / 9; border: 0; }
+
+.placeholder {
+  aspect-ratio: var(--ratio, 4 / 3);
+  background: linear-gradient(135deg, var(--peach), var(--blush));
+}
+
+/* The text area. Takes the tile's colour if it has one. */
+.body {
+  padding: 16px 18px 18px;
+  border-radius: var(--inner);
+  background: var(--tile-color, transparent);
+}
+
+/* Under an image the text sits on the white frame, with less padding */
+.tile-media + .body,
+.video-frame + .body,
+.placeholder + .body {
+  background: transparent;
+  padding: 12px 8px 6px;
+}
+
+.body h2 {
+  margin: 0 0 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.body p { margin: 0; }
+
+.tile-tag {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Colours a tile can choose in the data file */
+.color-peach  { --tile-color: var(--peach); }
+.color-butter { --tile-color: var(--butter); }
+.color-sage   { --tile-color: var(--sage); }
+.color-blush  { --tile-color: var(--blush); }
+
+/* Tile types */
+.quote {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tile-link a {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tile-link a:hover { color: var(--accent); }
+
+#sentinel { height: 40px; }
+
+.end {
+  text-align: center;
+  color: var(--muted);
+  padding-bottom: 40px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tile { transition: none; opacity: 1; transform: none; }
+}
