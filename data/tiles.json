@@ -1,6 +1,6 @@
 [
   { "id": "tile-001", "type": "text", "categories": ["about-me"], "title": "Hello",
-    "body": "Architect in the UK. A short intro about who you are, what you do and what you are curious about." },
+    "body": "Hello, thank you for stopping by my website. My name is Tudor and I am currently working as an architect for RSHP in London." },
 
   { "id": "tile-002", "type": "image", "categories": ["life"], "title": "A favourite photo",
     "caption": "Add a caption here.", "ratio": "3/4" },
@@ -18,7 +18,7 @@
     "caption": "Finish line feeling.", "ratio": "1/1" },
 
   { "id": "tile-007", "type": "text", "categories": ["interest"], "title": "Currently reading",
-    "body": "Book title, and one thing you have learned from it.", "color": "butter" },
+    "body": "Compassionate Workbook.", "color": "butter" },
 
   { "id": "tile-008", "type": "text", "categories": ["work"], "title": "Skills",
     "body": "Design, project management, drawing (replace with yours).", "color": "sage" },
@@ -57,7 +57,7 @@
     "label": "See how this site is built", "url": "https://github.com", "color": "sage" },
 
   { "id": "tile-020", "type": "text", "categories": [], "title": "Get in touch",
-    "body": "Add an email address or contact link you are happy to share publicly." },
+    "body": "Email me at tudor.jitariu@gmail.com" },
 
   { "id": "tile-021", "type": "stat", "categories": ["running"], "title": "Half marathon PB",
     "value": "1:45:00", "color": "butter" },
