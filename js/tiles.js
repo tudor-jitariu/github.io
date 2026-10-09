@@ -1,110 +1,64 @@
-[
-  {
-    "id": "tile-001",
-    "type": "image",
-    "categories": ["life"],
-    "title": "Placeholder photo",
-    "caption": "A recent photo",
-    "src": "assets/images/placeholder.jpg",
-    "alt": "A recent photo of Tudor"
-  },
-  {
-    "id": "tile-002",
-    "type": "text",
-    "categories": ["about-me"],
-    "title": "About me",
-    "body": "Architect in UK.",
-    "color": "peach"
-  },
-  {
-    "id": "tile-003",
-    "type": "stat",
-    "categories": ["running"],
-    "title": "Half marathon PB",
-    "value": "1:45:00",
-    "color": "butter"
-  },
-  {
-    "id": "tile-004",
-    "type": "link",
-    "categories": ["work"],
-    "title": "LinkedIn",
-    "url": "https://www.linkedin.com/in/your-profile",
-    "label": "Visit my profile",
-    "color": "sage"
-  },
-  {
-    "id": "tile-005",
-    "type": "quote",
-    "categories": ["about-me"],
-    "body": "A line you like to live by.",
-    "color": "blush"
-  },
-  {
-    "id": "tile-006",
-    "type": "image",
-    "categories": ["travel"],
-    "title": "Travel",
-    "caption": "Where was this?",
-    "ratio": "4/5"
-  },
-  {
-    "id": "tile-007",
-    "type": "text",
-    "categories": ["work"],
-    "title": "Current role",
-    "body": "Job title, practice, and a line about what you do day to day.",
-    "color": "sage"
-  },
-  {
-    "id": "tile-008",
-    "type": "image",
-    "categories": ["running"],
-    "title": "Race day",
-    "caption": "Finish line feeling.",
-    "ratio": "1/1"
-  },
-  {
-    "id": "tile-009",
-    "type": "text",
-    "categories": ["interest"],
-    "title": "Currently reading",
-    "body": "Book title, and one thing you have learned from it.",
-    "color": "butter"
-  },
-  {
-    "id": "tile-010",
-    "type": "image",
-    "categories": ["life"],
-    "title": "A favourite place",
-    "ratio": "3/4"
-  },
-  {
-    "id": "tile-011",
-    "type": "text",
-    "categories": ["work"],
-    "title": "Project one",
-    "body": "What it was, what you did, and what happened as a result."
-  },
-  {
-    "id": "tile-012",
-    "type": "quote",
-    "categories": ["interest"],
-    "body": "Another quote or motto.",
-    "color": "peach"
-  },
-  {
-    "id": "tile-013",
-    "type": "image",
-    "categories": ["travel"],
-    "title": "Another memory",
-    "ratio": "3/2"
-  },
-  {
-    "id": "tile-014",
-    "type": "text",
-    "categories": [],
-    "title": "Not sorted yet",
-    "body": "A tile with no category lands in Non-assigned."
+// Turns text into safe HTML, so odd characters can't break the page
+const esc = (s) =>
+  String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+
+const heading = (t) => (t.title ? `<h2>${esc(t.title)}</h2>` : "");
+const paragraph = (s) => (s ? `<p>${esc(s)}</p>` : "");
+
+// The top part of a tile: an image, a video, or a placeholder
+function media(t) {
+  if (t.type === "video" && t.youtube) {
+    return `<iframe class="video-frame"
+      src="https://www.youtube-nocookie.com/embed/${esc(t.youtube)}"
+      title="${esc(t.title)}" loading="lazy" allowfullscreen></iframe>`;
   }
-]
+  if (t.type === "image") {
+    return t.src
+      ? `<img class="tile-media" src="${esc(t.src)}" alt="${esc(t.alt || t.title)}" loading="lazy">`
+      : `<div class="placeholder" style="--ratio:${esc(t.ratio || "4/3")}" role="img" aria-label="Placeholder: add your image"></div>`;
+  }
+  return "";
+}
+
+// The text part of a tile. Each type has its own small function.
+// To add a new type later, add one more line here.
+const bodyRenderers = {
+  text:  (t) => heading(t) + paragraph(t.body),
+  image: (t) => heading(t) + paragraph(t.caption),
+  video: (t) => heading(t) + paragraph(t.caption),
+  quote: (t) => `<p class="quote">${esc(t.body)}</p>`,
+  stat:  (t) => `<p>${esc(t.title)}</p><div class="stat-value">${esc(t.value)}</div>`,
+  link:  (t) => heading(t) +
+    `<p><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.label || t.url)} →</a></p>`
+};
+
+// A tile with no categories counts as "non-assigned"
+export function getCategories(tile) {
+  return tile.categories && tile.categories.length ? tile.categories : ["non-assigned"];
+}
+
+// "about-me" becomes "About me"
+function formatCategory(name) {
+  const spaced = name.replace("-", " ");
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+}
+
+export function createTile(tile) {
+  const element = document.createElement("article");
+  const categories = getCategories(tile);
+
+  element.className = `tile tile-${tile.type}`;
+  if (tile.color) element.classList.add(`color-${tile.color}`);
+  element.dataset.id = tile.id;
+
+  const render = bodyRenderers[tile.type];
+  const body = render ? render(tile) : `<p>Unknown tile type: ${esc(tile.type)}</p>`;
+
+  element.innerHTML =
+    media(tile) +
+    `<div class="body">${body}<span class="tile-tag">${formatCategory(categories[0])}</span></div>`;
+
+  return element;
+}

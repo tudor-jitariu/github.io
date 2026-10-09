@@ -14,20 +14,35 @@
 
   <header class="site-header">
     <h1>Tudor Jitariu</h1>
-    <button id="cv-button" class="cv-button">View CV</button>
+    <div class="header-actions">
+      <button id="theme-button" class="header-button" type="button" aria-pressed="false">Dark mode</button>
+      <button id="cv-button" class="header-button" type="button">View CV</button>
+    </div>
   </header>
 
   <section class="banner">
-    <p class="banner-headline">Architect in the UK</p>
-    <p class="banner-sub">Buildings, running and everything in between</p>
+    <p class="banner-headline">Architect in London, United Kingdom</p>
+    <p class="banner-sub">Life is a work in progress</p>
   </section>
 
+  <section id="timeline" class="timeline" aria-label="Timeline"></section>
+  
   <nav id="filters" class="filters" aria-label="Filter tiles"></nav>
 
   <main id="board" class="board"></main>
   <div id="sentinel"></div>
   <p id="end" class="end" hidden>That's everything for now.</p>
-
+  <div id="cv-overlay" class="cv-overlay" role="dialog" aria-modal="true" aria-label="Curriculum vitae" hidden>
+    <button id="cv-close" class="cv-close" aria-label="Close CV">✕</button>
+    <div id="cv-spread" class="cv-spread"></div>
+    <div class="cv-controls">
+      <button id="cv-prev">← Previous</button>
+      <span id="cv-status"></span>
+      <button id="cv-next">Next →</button>
+      <a id="cv-download" href="assets/Tudor-Jitariu-CV.pdf" download>Download PDF</a>
+    </div>
+  </div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

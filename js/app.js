@@ -1,11 +1,19 @@
+import { initCV } from "./cv.js";
 import { createTile, getCategories } from "./tiles.js";
 import { buildFilters } from "./filters.js";
+import { buildTimeline } from "./timeline.js";
+import { initTheme } from "./theme.js";
 
 const BATCH = 12; // how many tiles to add each time you scroll to the bottom
 
 const board = document.getElementById("board");
 const sentinel = document.getElementById("sentinel");
 const endMessage = document.getElementById("end");
+
+initTheme();
+
+// Build the timeline
+buildTimeline(document.getElementById("timeline"));
 
 let allTiles = [];
 let activeCategory = "all";
@@ -67,3 +75,5 @@ async function init() {
 }
 
 init();
+initCV();
+buildTimeline(document.getElementById("timeline"));

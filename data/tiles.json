@@ -1,39 +1,84 @@
 [
-  {
-    "id": "tile-001",
-    "type": "image",
-    "categories": ["life"],
-    "title": "Placeholder photo",
-    "src": "assets/images/placeholder.jpg",
-    "alt": "A recent photo of Tudor",
-    "size": { "cols": 2, "rows": 2 }
-  },
-  {
-    "id": "tile-002",
-    "type": "text",
-    "categories": ["about-me"],
-    "title": "About me",
-    "body": "Architect in UK.",
-    "color": "peach",
-    "size": { "cols": 2, "rows": 1 }
-  },
-  {
-    "id": "tile-003",
-    "type": "stat",
-    "categories": ["running"],
-    "title": "Half marathon PB",
-    "value": "1:45:00",
-    "color": "butter",
-    "size": { "cols": 1, "rows": 1 }
-  },
-  {
-    "id": "tile-004",
-    "type": "link",
-    "categories": ["work"],
-    "title": "LinkedIn",
-    "url": "https://www.linkedin.com/in/your-profile",
-    "label": "Visit my profile",
-    "color": "sage",
-    "size": { "cols": 1, "rows": 1 }
-  }
+  { "id": "tile-001", "type": "text", "categories": ["about-me"], "title": "Hello",
+    "body": "Architect in the UK. A short intro about who you are, what you do and what you are curious about." },
+
+  { "id": "tile-002", "type": "image", "categories": ["life"], "title": "A favourite photo",
+    "caption": "Add a caption here.", "ratio": "3/4" },
+
+  { "id": "tile-003", "type": "text", "categories": ["work"], "title": "Current role",
+    "body": "Job title, practice, and a line about what you do day to day.", "color": "sage" },
+
+  { "id": "tile-004", "type": "quote", "categories": ["about-me"],
+    "body": "A line that you like to live by.", "color": "blush" },
+
+  { "id": "tile-005", "type": "link", "categories": ["work"], "title": "LinkedIn",
+    "label": "Connect with me", "url": "https://www.linkedin.com/in/your-profile", "color": "peach" },
+
+  { "id": "tile-006", "type": "image", "categories": ["running"], "title": "Race day",
+    "caption": "Finish line feeling.", "ratio": "1/1" },
+
+  { "id": "tile-007", "type": "text", "categories": ["interest"], "title": "Currently reading",
+    "body": "Book title, and one thing you have learned from it.", "color": "butter" },
+
+  { "id": "tile-008", "type": "text", "categories": ["work"], "title": "Skills",
+    "body": "Design, project management, drawing (replace with yours).", "color": "sage" },
+
+  { "id": "tile-009", "type": "image", "categories": ["life"], "title": "A GIF goes here",
+    "caption": "Point src at a .gif file and it will just work.", "ratio": "16/9" },
+
+  { "id": "tile-010", "type": "text", "categories": ["work"], "title": "Project one",
+    "body": "What it was, what you did, and what happened as a result." },
+
+  { "id": "tile-011", "type": "text", "categories": ["running"], "title": "Next goal",
+    "body": "A race, a course, or a trip you are planning.", "color": "butter" },
+
+  { "id": "tile-012", "type": "link", "categories": ["work"], "title": "Something I wrote",
+    "label": "Read the article", "url": "https://example.com", "color": "peach" },
+
+  { "id": "tile-013", "type": "quote", "categories": ["interest"],
+    "body": "Another quote, a motto, or a favourite line of your own.", "color": "peach" },
+
+  { "id": "tile-014", "type": "image", "categories": ["travel"], "title": "Travel",
+    "caption": "Where was this?", "ratio": "4/5" },
+
+  { "id": "tile-015", "type": "text", "categories": ["work"], "title": "Education",
+    "body": "Course, institution, year.", "color": "sage" },
+
+  { "id": "tile-016", "type": "text", "categories": ["interest"], "title": "Hobbies",
+    "body": "Running, cooking, photography... whatever fills your weekends." },
+
+  { "id": "tile-017", "type": "text", "categories": ["about-me"], "title": "Fun fact",
+    "body": "Something people would not guess about you.", "color": "butter" },
+
+  { "id": "tile-018", "type": "image", "categories": ["travel"], "title": "Another memory",
+    "ratio": "3/2" },
+
+  { "id": "tile-019", "type": "link", "categories": ["work"], "title": "Find me on GitHub",
+    "label": "See how this site is built", "url": "https://github.com", "color": "sage" },
+
+  { "id": "tile-020", "type": "text", "categories": [], "title": "Get in touch",
+    "body": "Add an email address or contact link you are happy to share publicly." },
+
+  { "id": "tile-021", "type": "stat", "categories": ["running"], "title": "Half marathon PB",
+    "value": "1:45:00", "color": "butter" },
+      { "id": "tile-022", "type": "text", "categories": ["work"], "title": "Project two",
+    "body": "What it was, what you did, and what happened as a result." },
+
+  { "id": "tile-023", "type": "image", "categories": ["work"], "title": "Project image",
+    "caption": "Add a caption here.", "ratio": "4/3" },
+
+  { "id": "tile-024", "type": "image", "categories": ["travel"], "title": "Place name",
+    "caption": "What made it memorable?", "ratio": "3/4" },
+
+  { "id": "tile-025", "type": "quote", "categories": ["about-me"],
+    "body": "Something someone once said to you.", "color": "sage" },
+
+  { "id": "tile-026", "type": "stat", "categories": ["running"], "title": "Marathon PB",
+    "value": "0:00:00", "color": "peach" },
+
+  { "id": "tile-027", "type": "text", "categories": ["interest"], "title": "Currently listening",
+    "body": "An album or podcast, and why.", "color": "blush" },
+
+  { "id": "tile-028", "type": "link", "categories": ["life"], "title": "Instagram",
+    "label": "See more photos", "url": "https://instagram.com/your-handle", "color": "butter" }
 ]

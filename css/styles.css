@@ -1,4 +1,5 @@
 :root {
+
   /* Palette: warm, soft, pastel */
   --bg: #fbf7f1;
   --text: #2d2926;
@@ -11,12 +12,14 @@
   --sage: #dce8d2;
   --blush: #f8d9dc;
   --white: #ffffff;
+  --border: #e5ddd2;
+  --tile-border: rgba(45, 41, 38, 0.08);
 
   /* Shape and spacing */
   --radius: 24px;                          /* outer tile corners */
-  --frame: 10px;                           /* thickness of the white edge */
+  --frame: 15px;                           /* thickness of the white edge */
   --inner: calc(var(--radius) - var(--frame)); /* inner corners, so the curves match */
-  --gap: 16px;
+  --gap: 20px;
 
   /* Fonts */
   --font-heading: "Newsreader", Georgia, serif;
@@ -32,6 +35,21 @@ body {
   line-height: 1.5;
   background: var(--bg);
   color: var(--text);
+}
+
+html.dark-mode {
+  --bg: #211f1d;
+  --text: #f4eee7;
+  --muted: #b9aea4;
+  --banner: #33412f;
+  --accent: #e58a6f;
+  --peach: #5a3d35;
+  --butter: #50462e;
+  --sage: #33412f;
+  --blush: #55383e;
+  --white: #302c29;
+  --border: #5b5149;
+  --tile-border: rgba(244, 238, 231, 0.14);
 }
 
 button:focus-visible, a:focus-visible {
@@ -55,7 +73,13 @@ button:focus-visible, a:focus-visible {
   letter-spacing: -0.02em;
 }
 
-.cv-button {
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-button {
   padding: 10px 20px;
   border: 1.5px solid var(--text);
   background: transparent;
@@ -67,7 +91,7 @@ button:focus-visible, a:focus-visible {
   transition: background 0.2s, color 0.2s;
 }
 
-.cv-button:hover {
+.header-button:hover {
   background: var(--text);
   color: var(--bg);
 }
@@ -104,7 +128,7 @@ button:focus-visible, a:focus-visible {
 
 .filters button {
   padding: 8px 16px;
-  border: 1.5px solid #e5ddd2;
+  border: 1.5px solid var(--border);
   background: transparent;
   color: var(--text);
   border-radius: 999px;
@@ -131,7 +155,9 @@ button:focus-visible, a:focus-visible {
 @media (max-width: 760px)  { .board { column-count: 3; } }
 @media (max-width: 540px)  {
   .board { column-count: 2; padding-left: 16px; padding-right: 16px; }
-  .site-header, .filters { padding-left: 16px; padding-right: 16px; }
+  .site-header { flex-wrap: wrap; gap: 16px; padding-left: 16px; padding-right: 16px; }
+  .header-actions { margin-left: auto; }
+  .filters { padding-left: 16px; padding-right: 16px; }
   .banner { margin: 0 16px; padding: 32px 24px; }
 }
 
@@ -141,7 +167,7 @@ button:focus-visible, a:focus-visible {
   margin: 0 0 var(--gap);
   padding: var(--frame);
   background: var(--white);
-  border: 1px solid rgba(45, 41, 38, 0.08);
+  border: 1px solid var(--tile-border);
   border-radius: var(--radius);
   box-shadow: 0 1px 3px rgba(45, 41, 38, 0.08);
   overflow: hidden;
@@ -245,3 +271,108 @@ button:focus-visible, a:focus-visible {
   html { scroll-behavior: auto; }
   .tile { transition: none; opacity: 1; transform: none; }
 }
+/* CV overlay */
+.cv-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(45, 41, 38, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cv-overlay[hidden] { display: none; }
+.cv-overlay.open { opacity: 1; }
+
+.cv-spread {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: min(1200px, 100%);
+  height: calc(100vh - 130px);
+  color: var(--white);
+}
+
+.cv-spread canvas {
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.cv-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.cv-controls button,
+.cv-controls a,
+.cv-close {
+  padding: 8px 16px;
+  border: 1.5px solid var(--white);
+  background: transparent;
+  color: var(--white);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.cv-controls button:hover:not(:disabled),
+.cv-controls a:hover,
+.cv-close:hover {
+  background: var(--white);
+  color: var(--text);
+}
+
+.cv-controls button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.cv-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-overlay { transition: none; }
+}
+.timeline {
+  margin: 20px 32px 0;
+  padding: 28px 40px;
+  background: var(--butter);
+  border-radius: var(--radius);
+}
+.timeline h2 { margin: 0 0 20px; font-family: var(--font-heading); font-size: 1.5rem; }
+.timeline-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 8px;
+}
+.timeline-item {
+  min-width: 0;
+  position: relative;
+  padding-top: 22px;
+  border-top: 2px solid var(--text);
+}
+.timeline-item::before {
+  content: ""; position: absolute; top: -7px; left: 0;
+  width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+}
+.timeline-year { display: block; font-family: var(--font-heading); font-size: 1.4rem; }
+.timeline-item p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
