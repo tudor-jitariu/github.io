@@ -6,7 +6,7 @@
     "caption": "Add a caption here.", "ratio": "3/4" },
 
   { "id": "tile-003", "type": "text", "categories": ["work"], "title": "Current role",
-    "body": "Job title, practice, and a line about what you do day to day.", "color": "sage" },
+    "body": "Architect at RSHP — Aviation, Transport, Offices and Cultural Projects.", "color": "sage" },
 
   { "id": "tile-004", "type": "quote", "categories": ["about-me"],
     "body": "A line that you like to live by.", "color": "blush" },
@@ -30,7 +30,7 @@
     "body": "What it was, what you did, and what happened as a result." },
 
   { "id": "tile-011", "type": "text", "categories": ["running"], "title": "Next goal",
-    "body": "A race, a course, or a trip you are planning.", "color": "butter" },
+    "body": "Run a Half-Marathon Trail Run in Transylvania", "color": "butter" },
 
   { "id": "tile-012", "type": "link", "categories": ["work"], "title": "Something I wrote",
     "label": "Read the article", "url": "https://example.com", "color": "peach" },
@@ -42,7 +42,7 @@
     "caption": "Where was this?", "ratio": "4/5" },
 
   { "id": "tile-015", "type": "text", "categories": ["work"], "title": "Education",
-    "body": "Course, institution, year.", "color": "sage" },
+    "body": "Architecture PGDiploma (RIBA/ARB Part 3) at Westminster University; Architecture MArch (RIBA/ARB Part 2) at The Bartlett, UCL; Architecture BArch (RIBA/ARB Part 1) at The University of Nottingham.", "color": "sage" },
 
   { "id": "tile-016", "type": "text", "categories": ["interest"], "title": "Hobbies",
     "body": "Running, cooking, photography... whatever fills your weekends." },
@@ -80,5 +80,14 @@
     "body": "An album or podcast, and why.", "color": "blush" },
 
   { "id": "tile-028", "type": "link", "categories": ["life"], "title": "Instagram",
-    "label": "See more photos", "url": "https://instagram.com/your-handle", "color": "butter" }
+    "label": "See more photos", "url": "https://instagram.com/your-handle", "color": "butter" },
+
+  { "id": "tile-029", "type": "link", "categories": ["university-work"], "title": "Year 4 Project",
+    "label": "A Stationary Body", "url": "https://summer2021.bartlettarchucl.com/pg16-a-stationary-body/year4-tudor-jitariu", "color": "peach" },
+
+  { "id": "tile-030", "type": "link", "categories": ["university-work"], "title": "Year 5 Project",
+    "label": "Forms of Collision", "url": "https://summer2022.bartlettarchucl.com/pg16-forms-of-collision/year5-tudor-jitariu", "color": "sage" },
+
+  { "id": "tile-031", "type": "text", "categories": ["running"], "title": "Running Gear",
+    "body": "Shoes, kit and equipment for the miles ahead.", "color": "blush" }
 ]

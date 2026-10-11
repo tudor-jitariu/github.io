@@ -14,11 +14,12 @@
   --white: #ffffff;
   --border: #e5ddd2;
   --tile-border: rgba(45, 41, 38, 0.08);
+  --timeline-dot: #e7a0a0;
 
   /* Shape and spacing */
   --radius: 24px;                          /* outer tile corners */
-  --frame: 15px;                           /* thickness of the white edge */
-  --inner: calc(var(--radius) - var(--frame)); /* inner corners, so the curves match */
+  --frame: 30px;                           /* enlarged white edge at the top */
+  --inner: 0px;                             /* content reaches the tile edges */
   --gap: 20px;
 
   /* Fonts */
@@ -50,6 +51,7 @@ html.dark-mode {
   --white: #302c29;
   --border: #5b5149;
   --tile-border: rgba(244, 238, 231, 0.14);
+  --timeline-dot: #e8a1a1;
 }
 
 button:focus-visible, a:focus-visible {
@@ -165,7 +167,7 @@ button:focus-visible, a:focus-visible {
 .tile {
   break-inside: avoid;
   margin: 0 0 var(--gap);
-  padding: var(--frame);
+  padding: var(--frame) 0 0;
   background: var(--white);
   border: 1px solid var(--tile-border);
   border-radius: var(--radius);
@@ -353,26 +355,52 @@ button:focus-visible, a:focus-visible {
   margin: 20px 32px 0;
   padding: 28px 40px;
   background: var(--butter);
+  border-top: 30px solid var(--white);
   border-radius: var(--radius);
 }
 .timeline h2 { margin: 0 0 20px; font-family: var(--font-heading); font-size: 1.5rem; }
 .timeline-list {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0 0 8px;
 }
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--text);
+}
 .timeline-item {
   min-width: 0;
   position: relative;
-  padding-top: 22px;
-  border-top: 2px solid var(--text);
+  padding-top: 16px;
 }
 .timeline-item::before {
-  content: ""; position: absolute; top: -7px; left: 0;
-  width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 10px; height: 10px; border-radius: 50%; background: var(--timeline-dot);
 }
-.timeline-year { display: block; font-family: var(--font-heading); font-size: 1.4rem; }
-.timeline-item p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+.timeline-year {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  line-height: 1.1;
+}
+.timeline-item strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.68rem;
+  line-height: 1.15;
+}
+.timeline-item p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.6rem;
+  line-height: 1.15;
+}

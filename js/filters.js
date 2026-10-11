@@ -5,6 +5,7 @@ export const CATEGORIES = [
   ["work", "Work"],
   ["about-me", "About me"],
   ["running", "Running"],
+  ["university-work", "University Work"],
   ["interest", "Interest"],
   ["travel", "Travel"],
   ["non-assigned", "Non-assigned"]
